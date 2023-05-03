@@ -72,17 +72,15 @@
 
 1102	001410		// BEQ to Addr. #1124 (Offset #10)
 
-// STUCK IN INF LOOP - START
-1104	020204		// Check R3 == R4
+1104	020304		// Check R3 == R4
 
-1106	002003		// BGE to Addr. #1116 (Offset #3)
+1106	001403		// BEQ to Addr. #1116 (Offset #3)
 
 1110	005203		// INC R3
 
 // Jump to Addr.#1104 (Check R3 == R4)
 1112	000137		// JMP Abs.PC
 1114	001104		// Addr. #1104
-// STUCK IN INF LOOP - END
 
 1116	005202		// INC R2
 
@@ -98,7 +96,7 @@
 
 1132	005200		// INC R0
 
-// Jump to display data to lights
+// Jump to display data to lights Addr.#1064
 1134	000137		// JMP Abs.R7
 1136	001064		// Addr. #1064
 
