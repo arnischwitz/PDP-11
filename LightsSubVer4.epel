@@ -57,24 +57,24 @@
 1062	177777		// #177777
 
 // Display current value in R0 on the data lights
-1064	010027		// MOV R0, Imm.PC
+1064	010037		// MOV R0, Imm.PC
 1066	777570		// Addr. #777570
 
 1070	020004		// Check R0 == R4
 
-1072	001422		// BEQ to Addr. #1140 (Offset #22)
+1072	001425		// BEQ to Addr. #1146 (Offset #25)
 
 1074	020104		// Check R1 == R4
 
-1076	001415		// BEQ to Addr. #1132 (Offset #15)
+1076	001415		// BEQ to Addr. #1132 (Offset #15, CLR R3)
 
 1100	020204		// Check R2 == R4
 
-1102	001410		// BEQ to Addr. #1124 (Offset #10)
+1102	001410		// BEQ to Addr. #1124 (Offset #10, INC R1)
 
 1104	020304		// Check R3 == R4
 
-1106	001403		// BEQ to Addr. #1116 (Offset #3)
+1106	001403		// BEQ to Addr. #1116 (Offset #3, INC R2)
 
 1110	005203		// INC R3
 
@@ -94,23 +94,31 @@
 1126	000137		// JMP Abs.PC
 1130	001074		// Addr. #1074
 
-1132	005200		// INC R0
+// Not ideal for performance, probably need to restructure loops
+1132	005003		// CLR R3
+
+1134	005002		// CLR R2
+
+1136	005001		// CLR R1
+
+
+1140	005200		// INC R0
 
 // Jump to display data to lights Addr.#1064
-1134	000137		// JMP Abs.R7
-1136	001064		// Addr. #1064
+1142	000137		// JMP Abs.R7
+1144	001064		// Addr. #1064
 
 // Restore register contents from stack
 
-1140	012604		// MOV (SP)+, R4
+1146	012604		// MOV (SP)+, R4
 
-1142	012603		// MOV (SP)+, R3
+1150	012603		// MOV (SP)+, R3
 
-1144	012602		// MOV (SP)+, R2
+1152	012602		// MOV (SP)+, R2
 
-1146	012601		// MOV (SP)+, R1
+1154	012601		// MOV (SP)+, R1
 
-1150	012600		// MOV (SP)+, R0
+1156	012600		// MOV (SP)+, R0
 
 // RTS to HALT
-1152	000207		// RTS PC
+1160	000207		// RTS PC
